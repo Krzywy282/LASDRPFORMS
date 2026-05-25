@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LACSD Use Of Force Report</title>
+
+  <link rel="stylesheet" href="style_uof.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form-panel">
+
+    <h2>LACSD Use Of Force Form</h2>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Station</label>
+        <input type="text" id="station">
+      </div>
+
+      <div class="form-group">
+        <label>Report No.</label>
+        <input type="text" id="reportNo">
+      </div>
+
+      <div class="form-group">
+        <label>Deputy Name</label>
+        <input type="text" id="deputy">
+      </div>
+
+      <div class="form-group">
+        <label>Serial Number</label>
+        <input type="text" id="serial">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="time">
+      </div>
+
+      <div class="form-group full">
+        <label>Location</label>
+        <input type="text" id="location">
+      </div>
+
+      <div class="form-group">
+        <label>Subject Name</label>
+        <input type="text" id="subject">
+      </div>
+
+      <div class="form-group">
+        <label>Subject DOB</label>
+        <input type="date" id="dob">
+      </div>
+
+      <div class="form-group">
+        <label>Force Type</label>
+        <select id="forceType">
+          <option></option>
+          <option>Control Hold</option>
+          <option>Taser</option>
+          <option>Baton</option>
+          <option>Firearm</option>
+          <option>Physical Force</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Injury</label>
+        <select id="injury">
+          <option></option>
+          <option>None</option>
+          <option>Minor</option>
+          <option>Major</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Incident Summary</label>
+        <textarea id="summary"></textarea>
+      </div>
+
+    </div>
+
+    <div class="btns">
+      <button class="download" onclick="downloadImage()">Pobierz JPG</button>
+      <button class="copy" onclick="copyImage()">Kopiuj obraz</button>
+    </div>
+
+  </div>
+
+  <!-- REPORT -->
+  <div class="preview-wrapper">
+
+    <div id="report">
+
+      <div class="report-title">
+        LOS ANGELES COUNTY SHERIFF'S DEPARTMENT
+        USE OF FORCE REPORT
+      </div>
+
+      <table>
+
+        <tr>
+          <td class="label">Location Booked:</td>
+          <td colspan="2"><div id="r_station"></div></td>
+
+          <td class="label">Report No.:</td>
+          <td><div id="r_reportNo"></div></td>
+        </tr>
+
+        <tr>
+          <td class="label">Deputy:</td>
+          <td><div id="r_deputy"></div></td>
+
+          <td class="label">Serial No.:</td>
+          <td colspan="2"><div id="r_serial"></div></td>
+        </tr>
+
+        <tr>
+          <td class="label">Subject Name:</td>
+          <td colspan="2"><div id="r_subject"></div></td>
+
+          <td class="label">DOB:</td>
+          <td><div id="r_dob"></div></td>
+        </tr>
+
+        <tr>
+          <td class="label">Location:</td>
+          <td colspan="4"><div id="r_location"></div></td>
+        </tr>
+
+        <tr>
+          <td class="label">Date:</td>
+          <td><div id="r_date"></div></td>
+
+          <td class="label">Time:</td>
+          <td colspan="2"><div id="r_time"></div></td>
+        </tr>
+
+        <tr>
+          <td class="label">Force Type:</td>
+          <td><div id="r_forceType"></div></td>
+
+          <td class="label">Injury:</td>
+          <td colspan="2"><div id="r_injury"></div></td>
+        </tr>
+
+        <tr>
+          <td colspan="5" class="summary-title">
+            INCIDENT SUMMARY
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="5" class="summary-box">
+            <div id="r_summary"></div>
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script_uof.js"></script>
+</body>
+</html>

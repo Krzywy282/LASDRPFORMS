@@ -1,0 +1,157 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:#0f1720;
+  color:white;
+  overflow:hidden;
+}
+
+.mdt-container{
+  display:flex;
+  width:100vw;
+  height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:280px;
+  background:#111927;
+  border-right:1px solid rgba(255,255,255,0.08);
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:40px;
+  color:#4da3ff;
+  letter-spacing:1px;
+}
+
+.sidebar-section{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.section-title{
+  font-size:12px;
+  color:#7f8b99;
+  margin-bottom:8px;
+  letter-spacing:1px;
+}
+
+.nav-btn{
+  background:#182230;
+  padding:14px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  transition:0.2s;
+  font-size:15px;
+  border:1px solid transparent;
+}
+
+.nav-btn:hover{
+  background:#223247;
+  border-color:#4da3ff;
+  transform:translateX(3px);
+}
+
+/* MAIN */
+
+.main-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* TOPBAR */
+
+.topbar{
+  height:75px;
+  background:#111927;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  font-size:15px;
+  font-weight:600;
+}
+
+.status{
+  background:#17351f;
+  color:#67ff9a;
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:13px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+  padding:35px;
+  overflow-y:auto;
+}
+
+.welcome-card{
+  background:linear-gradient(135deg,#1a2b44,#243f64);
+  padding:35px;
+  border-radius:20px;
+  margin-bottom:30px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.welcome-card h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.welcome-card p{
+  color:#c7d2df;
+  font-size:16px;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+
+.report-card{
+  background:#182230;
+  border-radius:18px;
+  padding:25px;
+  text-decoration:none;
+  color:white;
+  transition:0.25s;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.report-card:hover{
+  transform:translateY(-4px);
+  background:#223247;
+  border-color:#4da3ff;
+}
+
+.report-card h2{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.report-card p{
+  color:#b7c3d1;
+  line-height:1.5;
+  font-size:14px;
+}

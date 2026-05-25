@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOLO Report</title>
+
+  <link rel="stylesheet" href="style_bolo.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FORM PANEL -->
+  <div class="form-panel">
+
+    <h2>LACSD BOLO Form</h2>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Agency / Station</label>
+        <input type="text" id="station">
+      </div>
+
+      <div class="form-group">
+        <label>BOLO Number</label>
+        <input type="text" id="bolo">
+      </div>
+
+      <div class="form-group">
+        <label>Reporting Deputy</label>
+        <input type="text" id="deputy">
+      </div>
+
+      <div class="form-group">
+        <label>Serial Number</label>
+        <input type="text" id="serial">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="time">
+      </div>
+
+      <div class="form-group full">
+        <label>Last Known Location</label>
+        <input type="text" id="location">
+      </div>
+
+      <div class="form-group">
+        <label>BOLO Type</label>
+
+        <select id="type">
+          <option></option>
+          <option>Wanted Person</option>
+          <option>Armed Suspect</option>
+          <option>Kidnapping</option>
+          <option>Robbery</option>
+          <option>Assault</option>
+          <option>Stolen Vehicle</option>
+          <option>Felony Evading</option>
+          <option>Missing Person</option>
+          <option>Homicide</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Threat Level</label>
+
+        <select id="threat">
+          <option></option>
+          <option>Low</option>
+          <option>Moderate</option>
+          <option>High</option>
+          <option>Extreme</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Suspect Name</label>
+        <input type="text" id="suspect">
+      </div>
+
+      <div class="form-group">
+        <label>Nickname / Alias</label>
+        <input type="text" id="alias">
+      </div>
+
+      <div class="form-group">
+        <label>Race</label>
+        <input type="text" id="race">
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <input type="text" id="gender">
+      </div>
+
+      <div class="form-group">
+        <label>Height</label>
+        <input type="text" id="height">
+      </div>
+
+      <div class="form-group">
+        <label>Weight</label>
+        <input type="text" id="weight">
+      </div>
+
+      <div class="form-group">
+        <label>Hair Color</label>
+        <input type="text" id="hair">
+      </div>
+
+      <div class="form-group">
+        <label>Eye Color</label>
+        <input type="text" id="eyes">
+      </div>
+
+      <div class="form-group full">
+        <label>Clothing Description</label>
+        <textarea id="clothing"></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Tattoos / Marks / Distinguishing Features</label>
+        <textarea id="marks"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Vehicle Make / Model</label>
+        <input type="text" id="vehicle">
+      </div>
+
+      <div class="form-group">
+        <label>Vehicle Color</label>
+        <input type="text" id="vehicleColor">
+      </div>
+
+      <div class="form-group">
+        <label>License Plate</label>
+        <input type="text" id="plate">
+      </div>
+
+      <div class="form-group">
+        <label>Vehicle Damage / Modifications</label>
+        <input type="text" id="damage">
+      </div>
+
+      <div class="form-group full">
+        <label>Weapons Information</label>
+        <textarea id="weapons"></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Incident Details / What Happened</label>
+        <textarea id="details"></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Last Known Direction / Additional Notes</label>
+        <textarea id="notes"></textarea>
+      </div>
+
+    </div>
+
+    <div class="btns">
+      <button class="download" onclick="downloadImage()">Pobierz JPG</button>
+      <button class="copy" onclick="copyImage()">Kopiuj obraz</button>
+    </div>
+
+  </div>
+
+  <!-- REPORT -->
+  <div class="preview-wrapper">
+
+    <div id="reportSheet">
+
+      <div class="report-title">
+        LOS ANGLES COUNTY SHERIFF'S DEPARTMENT
+        BE ON THE LOOKOUT (BOLO)
+      </div>
+
+      <table>
+
+        <tr>
+          <td class="label">Agency</td>
+          <td id="r_station"></td>
+
+          <td class="label">BOLO No.</td>
+          <td id="r_bolo"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Reporting Deputy</td>
+          <td id="r_deputy"></td>
+
+          <td class="label">Serial No.</td>
+          <td id="r_serial"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Date</td>
+          <td id="r_date"></td>
+
+          <td class="label">Time</td>
+          <td id="r_time"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Last Known Location</td>
+          <td colspan="3" id="r_location"></td>
+        </tr>
+
+        <tr>
+          <td class="label">BOLO Type</td>
+          <td id="r_type"></td>
+
+          <td class="label">Threat Level</td>
+          <td id="r_threat"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            SUSPECT DESCRIPTION
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Name</td>
+          <td id="r_suspect"></td>
+
+          <td class="label">Alias</td>
+          <td id="r_alias"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Race</td>
+          <td id="r_race"></td>
+
+          <td class="label">Gender</td>
+          <td id="r_gender"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Height</td>
+          <td id="r_height"></td>
+
+          <td class="label">Weight</td>
+          <td id="r_weight"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Hair</td>
+          <td id="r_hair"></td>
+
+          <td class="label">Eyes</td>
+          <td id="r_eyes"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Clothing</td>
+          <td colspan="3">
+            <div class="content-box" id="r_clothing"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Marks / Tattoos</td>
+          <td colspan="3">
+            <div class="content-box" id="r_marks"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            VEHICLE INFORMATION
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Vehicle</td>
+          <td id="r_vehicle"></td>
+
+          <td class="label">Color</td>
+          <td id="r_vehicleColor"></td>
+        </tr>
+
+        <tr>
+          <td class="label">License Plate</td>
+          <td id="r_plate"></td>
+
+          <td class="label">Damage / Mods</td>
+          <td id="r_damage"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            WEAPONS INFORMATION
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="medium-box">
+            <div class="content-box" id="r_weapons"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            INCIDENT DETAILS
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="large-box">
+            <div class="content-box" id="r_details"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            LAST KNOWN DIRECTION / NOTES
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="medium-box">
+            <div class="content-box" id="r_notes"></div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="footer">
+        Los Angeles County Sheriff's Department — BOLO Intelligence Distribution
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script_bolo.js"></script>
+</body>
+</html>

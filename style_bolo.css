@@ -1,0 +1,160 @@
+*{
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  margin:0;
+  padding:20px;
+  background:#d8d8d8;
+  overflow-x:auto;
+}
+
+.container{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+}
+
+.form-panel{
+  min-width:460px;
+  flex-shrink:0;
+}
+
+.preview-wrapper{
+  flex-shrink:0;
+}
+
+.form-panel h2{
+  margin-top:0;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group.full{
+  grid-column:1 / 3;
+}
+
+.form-group label{
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  border:1px solid #777;
+  padding:7px;
+  font-size:13px;
+}
+
+textarea{
+  resize:vertical;
+  min-height:100px;
+}
+
+.btns{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+
+button{
+  border:none;
+  padding:10px 15px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.download{
+  background:#1565c0;
+}
+
+.copy{
+  background:#2e7d32;
+}
+
+.preview-wrapper{
+  background:white;
+  padding:15px;
+  border:1px solid #888;
+}
+
+#reportSheet{
+  width:900px;
+  max-width:900px;
+  background:white;
+  border:2px solid black;
+  flex-shrink:0;
+}
+
+.report-title{
+  text-align:center;
+  font-size:34px;
+  font-weight:bold;
+  padding:15px;
+  border-bottom:2px solid black;
+  letter-spacing:2px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+td{
+  border:1px solid black;
+  padding:8px;
+  font-size:13px;
+  vertical-align:top;
+  overflow:hidden;
+  word-break:break-word;
+}
+
+.label{
+  width:180px;
+  background:#ececec;
+  font-weight:bold;
+}
+
+.section{
+  background:#dcdcdc;
+  text-align:center;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.large-box{
+  height:260px;
+}
+
+.medium-box{
+  height:180px;
+}
+
+.content-box{
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
+.footer{
+  border-top:2px solid black;
+  padding:8px;
+  text-align:center;
+  font-size:11px;
+  background:#f3f3f3;
+}

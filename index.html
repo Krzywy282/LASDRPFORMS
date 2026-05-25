@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LASD Critical Incident Report</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form-panel">
+
+    <h2>Critical Incident Form</h2>
+
+    <div class="form-group">
+      <label>Station / Division</label>
+      <input type="text" id="station">
+    </div>
+
+    <div class="form-group">
+      <label>Incident Number</label>
+      <input type="text" id="incident">
+    </div>
+
+    <div class="form-group">
+      <label>Deputy Name</label>
+      <input type="text" id="deputy">
+    </div>
+
+    <div class="form-group">
+      <label>Badge Number</label>
+      <input type="text" id="badge">
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" id="date">
+    </div>
+
+    <div class="form-group">
+      <label>Time</label>
+      <input type="time" id="time">
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" id="location">
+    </div>
+
+    <div class="form-group">
+      <label>Incident Type</label>
+
+      <select id="type">
+        <option></option>
+        <option>Deputy Involved Shooting</option>
+        <option>Use of Force</option>
+        <option>Armed Suspect</option>
+        <option>Officer Down</option>
+        <option>Pursuit</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Subject / Suspect Name</label>
+      <input type="text" id="suspect">
+    </div>
+
+    <div class="form-group">
+      <label>Status</label>
+
+      <select id="status">
+        <option></option>
+        <option>No Injuries</option>
+        <option>Suspect Injured</option>
+        <option>Deputy Injured</option>
+        <option>Fatality</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Summary</label>
+      <textarea id="summary"></textarea>
+    </div>
+
+    <div class="btns">
+      <button class="download" onclick="downloadImage()">
+        Pobierz JPG
+      </button>
+
+      <button class="copy" onclick="copyImage()">
+        Kopiuj obraz
+      </button>
+    </div>
+
+  </div>
+
+  <!-- REPORT -->
+  <div class="preview-wrapper">
+
+    <div id="report">
+
+      <div class="title">
+        LOS ANGELES COUNTY SHERIFF'S DEPARTMENT
+        <br>
+        CRITICAL INCIDENT REPORT
+      </div>
+
+      <table>
+
+        <tr>
+          <th>Station</th>
+          <td id="r_station"></td>
+
+          <th>Incident No.</th>
+          <td id="r_incident"></td>
+        </tr>
+
+        <tr>
+          <th>Deputy</th>
+          <td id="r_deputy"></td>
+
+          <th>Badge</th>
+          <td id="r_badge"></td>
+        </tr>
+
+        <tr>
+          <th>Date</th>
+          <td id="r_date"></td>
+
+          <th>Time</th>
+          <td id="r_time"></td>
+        </tr>
+
+        <tr>
+          <th>Location</th>
+          <td colspan="3" id="r_location"></td>
+        </tr>
+
+        <tr>
+          <th>Incident Type</th>
+          <td id="r_type"></td>
+
+          <th>Status</th>
+          <td id="r_status"></td>
+        </tr>
+
+        <tr>
+          <th>Subject / Suspect</th>
+          <td colspan="3" id="r_suspect"></td>
+        </tr>
+
+        <tr>
+          <th colspan="4">
+            Incident Summary
+          </th>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="summary-cell">
+            <div id="r_summary"></div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="footer">
+        Internal LASD Documentation System
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

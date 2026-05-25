@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Collision Report</title>
+
+  <link rel="stylesheet" href="style_tc.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form-panel">
+
+    <h2>LACSD Traffic Collision Form</h2>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Station</label>
+        <input type="text" id="station">
+      </div>
+
+      <div class="form-group">
+        <label>Report Number</label>
+        <input type="text" id="report">
+      </div>
+
+      <div class="form-group">
+        <label>Deputy Name</label>
+        <input type="text" id="deputy">
+      </div>
+
+      <div class="form-group">
+        <label>Serial Number</label>
+        <input type="text" id="serial">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="time">
+      </div>
+
+      <div class="form-group full">
+        <label>Collision Location</label>
+        <input type="text" id="location">
+      </div>
+
+      <div class="form-group">
+        <label>Driver 1</label>
+        <input type="text" id="driver1">
+      </div>
+
+      <div class="form-group">
+        <label>Vehicle 1</label>
+        <input type="text" id="vehicle1">
+      </div>
+
+      <div class="form-group">
+        <label>Second Party Type</label>
+
+        <select id="partyType">
+          <option>Driver / Vehicle</option>
+          <option>Pedestrian</option>
+          <option>Bicycle</option>
+          <option>Motorcycle</option>
+          <option>Fixed Object</option>
+          <option>Animal</option>
+          <option>Parked Vehicle</option>
+          <option>Building</option>
+          <option>Pole / Tree / Barrier</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Second Party Description</label>
+        <input type="text" id="partyDesc">
+      </div>
+
+      <div class="form-group">
+        <label>Weather</label>
+        <select id="weather">
+          <option></option>
+          <option>Clear</option>
+          <option>Rain</option>
+          <option>Fog</option>
+          <option>Windy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Road Condition</label>
+        <select id="road">
+          <option></option>
+          <option>Dry</option>
+          <option>Wet</option>
+          <option>Damaged</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Injuries</label>
+        <select id="injuries">
+          <option></option>
+          <option>No Injuries</option>
+          <option>Minor Injuries</option>
+          <option>Major Injuries</option>
+          <option>Fatalities</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Hit & Run</label>
+        <select id="hitrun">
+          <option></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Collision Summary</label>
+        <textarea id="summary"></textarea>
+      </div>
+
+    </div>
+
+    <div class="btns">
+      <button class="download" onclick="downloadImage()">Pobierz JPG</button>
+      <button class="copy" onclick="copyImage()">Kopiuj obraz</button>
+    </div>
+
+  </div>
+
+  <!-- REPORT -->
+  <div class="preview-wrapper">
+
+    <div id="reportSheet">
+
+      <div class="report-title">
+        LOS ANGELES COUNTY SHERIFF'S DEPARTMENT
+        TRAFFIC COLLISION REPORT
+      </div>
+
+      <table>
+
+        <tr>
+          <td class="label">Station</td>
+          <td id="r_station"></td>
+
+          <td class="label">Report No.</td>
+          <td id="r_report"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Deputy</td>
+          <td id="r_deputy"></td>
+
+          <td class="label">Serial No.</td>
+          <td id="r_serial"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Date</td>
+          <td id="r_date"></td>
+
+          <td class="label">Time</td>
+          <td id="r_time"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Location</td>
+          <td colspan="3" id="r_location"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            DRIVER / VEHICLE INFORMATION
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Driver 1</td>
+          <td id="r_driver1"></td>
+
+          <td class="label">Vehicle 1</td>
+          <td id="r_vehicle1"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Second Party Type</td>
+          <td id="r_partyType"></td>
+
+          <td class="label">Description</td>
+          <td id="r_partyDesc"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            ENVIRONMENT CONDITIONS
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Weather</td>
+          <td id="r_weather"></td>
+
+          <td class="label">Road Condition</td>
+          <td id="r_road"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Injuries</td>
+          <td id="r_injuries"></td>
+
+          <td class="label">Hit & Run</td>
+          <td id="r_hitrun"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            COLLISION SUMMARY
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="summary-box">
+            <div class="summary-content" id="r_summary"></div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="footer">
+        Los Angeles County Sheriff's Department — Traffic Collision Documentation
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script_tc.js"></script>
+</body>
+</html>

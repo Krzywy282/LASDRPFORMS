@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detailed Incident Report</title>
+
+  <link rel="stylesheet" href="style_ic.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form-panel">
+
+    <h2>LACSD Detailed Incident Form</h2>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Station</label>
+        <input type="text" id="station">
+      </div>
+
+      <div class="form-group">
+        <label>Incident Number</label>
+        <input type="text" id="incident">
+      </div>
+
+      <div class="form-group">
+        <label>Reporting Deputy</label>
+        <input type="text" id="deputy">
+      </div>
+
+      <div class="form-group">
+        <label>Serial Number</label>
+        <input type="text" id="serial">
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="time">
+      </div>
+
+      <div class="form-group full">
+        <label>Incident Location</label>
+        <input type="text" id="location">
+      </div>
+
+      <div class="form-group">
+        <label>Incident Type</label>
+
+        <select id="type">
+          <option></option>
+          <option>Assault</option>
+          <option>Burglary</option>
+          <option>Domestic Violence</option>
+          <option>Suspicious Person</option>
+          <option>Disturbance</option>
+          <option>Robbery</option>
+          <option>Traffic Stop</option>
+          <option>Use of Force</option>
+          <option>Weapon Call</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Priority Level</label>
+
+        <select id="priority">
+          <option></option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Critical</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Suspect Name</label>
+        <input type="text" id="suspect">
+      </div>
+
+      <div class="form-group">
+        <label>Victim Name</label>
+        <input type="text" id="victim">
+      </div>
+
+      <div class="form-group">
+        <label>Arrest Made</label>
+
+        <select id="arrest">
+          <option></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Medical Required</label>
+
+        <select id="medical">
+          <option></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Detailed Narrative</label>
+        <textarea id="narrative"></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Evidence / Property</label>
+        <textarea id="evidence"></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Witness Statements</label>
+        <textarea id="witness"></textarea>
+      </div>
+
+    </div>
+
+    <div class="btns">
+      <button class="download" onclick="downloadImage()">Pobierz JPG</button>
+      <button class="copy" onclick="copyImage()">Kopiuj obraz</button>
+    </div>
+
+  </div>
+
+  <!-- REPORT -->
+  <div class="preview-wrapper">
+
+    <div id="reportSheet">
+
+      <div class="report-title">
+        LOS ANGELES COUNTY SHERIFF'S DEPARTMENT
+        DETAILED INCIDENT REPORT
+      </div>
+
+      <table>
+
+        <tr>
+          <td class="label">Station</td>
+          <td id="r_station"></td>
+
+          <td class="label">Incident No.</td>
+          <td id="r_incident"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Deputy</td>
+          <td id="r_deputy"></td>
+
+          <td class="label">Serial No.</td>
+          <td id="r_serial"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Date</td>
+          <td id="r_date"></td>
+
+          <td class="label">Time</td>
+          <td id="r_time"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Location</td>
+          <td colspan="3" id="r_location"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Incident Type</td>
+          <td id="r_type"></td>
+
+          <td class="label">Priority</td>
+          <td id="r_priority"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Suspect</td>
+          <td id="r_suspect"></td>
+
+          <td class="label">Victim</td>
+          <td id="r_victim"></td>
+        </tr>
+
+        <tr>
+          <td class="label">Arrest Made</td>
+          <td id="r_arrest"></td>
+
+          <td class="label">Medical Required</td>
+          <td id="r_medical"></td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            INCIDENT NARRATIVE
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="large-box">
+            <div class="content-box" id="r_narrative"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            EVIDENCE / PROPERTY
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="medium-box">
+            <div class="content-box" id="r_evidence"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="section" colspan="4">
+            WITNESS STATEMENTS
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="medium-box">
+            <div class="content-box" id="r_witness"></div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="footer">
+        Los Angeles County Sheriff's Department — Internal Incident Documentation
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script_ic.js"></script>
+</body>
+</html>
